@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: run Lint
-        run: ./graldew lintDebug
+        run: ./gradlew lintDebug
   detekt:
     runs-on: ubuntu-latest
 
