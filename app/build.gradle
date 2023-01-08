@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+apply from: "../ktlint.gradle"
+apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
     namespace 'com.lukic.lungcancerapp'
@@ -42,3 +44,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
+
