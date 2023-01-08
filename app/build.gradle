@@ -7,12 +7,12 @@ apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
     namespace 'com.lukic.lungcancerapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.lukic.lungcancerapp"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
