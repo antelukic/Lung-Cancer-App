@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_padding">16dp</dimen>
+    <dimen name="start_now_button_padding">16dp</dimen>
+    <dimen name="padding_indicator">16dp</dimen>
+    <dimen name="intro_facts_padding">20dp</dimen>
+    <dimen name="intro_body_corner_size">12dp</dimen>
+    <dimen name="intro_card_border_width">2dp</dimen>
+    <dimen name="intro_card_elevation">12dp</dimen>
+    <dimen name="intro_text_padding">20dp</dimen>
+</resources>
