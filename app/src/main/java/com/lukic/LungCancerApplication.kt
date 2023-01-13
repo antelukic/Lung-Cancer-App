@@ -2,6 +2,8 @@ package com.lukic
 
 import android.app.Application
 import com.lukic.data.di.networkModule
+import com.lukic.di.appModule
+import com.lukic.presentation.screen.intro.di.introModule
 import org.koin.core.context.startKoin
 
 class LungCancerApplication : Application() {
@@ -11,7 +13,9 @@ class LungCancerApplication : Application() {
         startKoin {
             modules(
                 listOf(
-                    networkModule
+                    appModule(this@LungCancerApplication),
+                    networkModule,
+                    introModule
                 )
             )
         }
