@@ -16,6 +16,6 @@
     </fragment>
     <fragment
         android:id="@+id/userDetailsStepGenderFragment"
-        android:name="com.lukic.presentation.userdetails.UserDetailsStepGenderFragment"
+        android:name="com.lukic.presentation.screen.userdetails.InputInfoFragment"
         android:label="UserDetailsStepGenderFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.lukic.domain.intro.resources
+package com.lukic.presentation.screen.intro.resources
 
 interface IntroTranslations {
 

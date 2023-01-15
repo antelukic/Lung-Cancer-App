@@ -1,7 +1,6 @@
 package com.lukic.presentation.screen.intro.resources
 
 import android.content.res.Resources
-import com.lukic.domain.intro.resources.IntroTranslations
 import com.lukic.lungcancerapp.R
 
 class IntroTranslationsImpl(private val resources: Resources) : IntroTranslations {

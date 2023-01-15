@@ -2,11 +2,34 @@
     <string name="app_name">Lung Cancer App</string>
     <string name="intro_title">Did You Know?</string>
     <string name="intro_button_text">Start Now</string>
+    <string name="input_info_title">Please answer the questions</string>
+    <string name="input_gender_male">Male Gender</string>
+    <string name="input_gender_female">Female Gender</string>
     <string-array name="intro_fun_facts">
         <item>Lung cancer strikes both men and women and people of all ages. Lung cancer affects both men and women with the average age being 70 years. Younger adults can still develop the disease with approximately 7% of lung cancer cases occurring in people under the age of 55.</item>
         <item>Drinking water containing arsenic INCREASES the risk of lung chance</item>
         <item>Current and former smokers, who are taking high-dose beta-carotene supplements are increasing the risk of lung cancer</item>
         <item>Lung cancer accounts for 12% of all new cancer diagnoses but 21% of all cancer deaths</item>
         <item>More lives are lost to lung cancer than to colorectal and pancreatic cancers combined</item>
+    </string-array>
+    <string-array name="input_details_questions">
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
+        <item>Please select your gender</item>
     </string-array>
 </resources>
