@@ -4,6 +4,7 @@ import android.app.Application
 import com.lukic.data.di.networkModule
 import com.lukic.di.appModule
 import com.lukic.presentation.screen.intro.di.introModule
+import com.lukic.presentation.screen.userdetails.di.userInputModule
 import org.koin.core.context.startKoin
 
 class LungCancerApplication : Application() {
@@ -15,7 +16,8 @@ class LungCancerApplication : Application() {
                 listOf(
                     appModule(this@LungCancerApplication),
                     networkModule,
-                    introModule
+                    introModule,
+                    userInputModule
                 )
             )
         }
