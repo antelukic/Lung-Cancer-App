@@ -83,5 +83,8 @@ dependencies {
     def accompanist = "0.25.1"
     implementation "com.google.accompanist:accompanist-pager:$accompanist"
     implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie-compose:5.2.0"
 }
 

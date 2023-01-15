@@ -13,4 +13,13 @@
     <dimen name="input_gender_spacer_width">16dp</dimen>
     <dimen name="input_details_title_padding">16dp</dimen>
     <dimen name="intro_pager_input_spacer_height">20dp</dimen>
+    <dimen name="yes_no_questions_spacer_height">20dp</dimen>
+    <dimen name="yes_no_button_padding">16dp</dimen>
+    <dimen name="age_text_padding">16dp</dimen>
+    <dimen name="select_age_spacer_height">16dp</dimen>
+    <dimen name="lottie_animation_size">160dp</dimen>
+    <dimen name="continue_button_padding">16dp</dimen>
+    <dimen name="slider_horizontal_padding">16dp</dimen>
+    <dimen name="question_padding">16dp</dimen>
+    <dimen name="input_age_spacer_height">12dp</dimen>
 </resources>

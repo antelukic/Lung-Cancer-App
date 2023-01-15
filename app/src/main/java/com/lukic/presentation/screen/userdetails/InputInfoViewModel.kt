@@ -18,11 +18,11 @@ private const val DEFAULT_NUMBER_ANSWER = 0
 private const val INITIAL_STEP = -1
 
 data class Content(
-    val stepNumber: Int,
+    val step: UserInputSteps,
     val question: String
 ) {
     companion object {
-        val Default = Content(0, "")
+        val Default = Content(UserInputSteps.GENDER, "")
     }
 }
 
@@ -46,21 +46,27 @@ class InputInfoViewModel(
 
     private fun UserInputModel.toContent(): Content =
         Content(
-            stepNumber = step,
+            step = UserInputSteps.fromInt(step),
             question = inputInfoTranslations.inputInfoQuestion(step)
         )
 
-    fun publishTextAnswer(step: Int, answer: String) {
+    fun publishTextAnswer(step: UserInputSteps, answer: String) {
         bgScope.launch {
-            publishUserInputStep(step)
-            publishUserStepInfo(step = step, textAnswer = answer, numberAnswer = DEFAULT_NUMBER_ANSWER)
+            publishUserInputStep(step.ordinal)
+            publishUserStepInfo(step = step.ordinal, textAnswer = answer, numberAnswer = DEFAULT_NUMBER_ANSWER)
         }
     }
 
-    fun publishNumberAnswer(step: Int, answer: Int) {
+    fun publishNumberAnswer(step: UserInputSteps, answer: Int) {
         bgScope.launch {
-            publishUserInputStep(step)
-            publishUserStepInfo(step = step, numberAnswer = answer, textAnswer = DEFAULT_TEXT_ANSWER)
+            publishUserInputStep(step.ordinal)
+            publishUserStepInfo(step = step.ordinal, numberAnswer = answer, textAnswer = DEFAULT_TEXT_ANSWER)
+        }
+    }
+
+    fun navigateBack(step: UserInputSteps) {
+        bgScope.launch {
+            publishUserInputStep(step.ordinal - 2)
         }
     }
 

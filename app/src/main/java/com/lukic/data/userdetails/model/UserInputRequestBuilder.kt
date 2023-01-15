@@ -17,7 +17,7 @@ class UserInputRequestBuilder private constructor(
     val shortnessOfBreath: Int?,
     val swallowingDifficulty: Int?,
     val chestPain: Int?,
-    val lungCancer: Int?
+    val lungCancer: String?
 ) {
 
     @Suppress("TooManyFunctions")
@@ -37,7 +37,7 @@ class UserInputRequestBuilder private constructor(
         var shortnessOfBreath: Int? = null,
         var swallowingDifficulty: Int? = null,
         var chestPain: Int? = null,
-        var lungCancer: Int? = null
+        var lungCancer: String? = null
     ) {
         private fun gender(value: String) = apply { this.gender = value }
         private fun age(value: Int) = apply { this.age = value }
@@ -54,7 +54,7 @@ class UserInputRequestBuilder private constructor(
         private fun shortnessOfBreath(value: Int) = apply { this.shortnessOfBreath = value }
         private fun swallowingDifficulty(value: Int) = apply { this.swallowingDifficulty = value }
         private fun chestPain(value: Int) = apply { this.chestPain = value }
-        private fun lungCancer(value: Int) = apply { this.lungCancer = value }
+        private fun lungCancer(value: Int) = apply { this.lungCancer = if (value == 1) "YES" else "NO" }
         fun build() = UserInputRequestBuilder(
             gender,
             age,
