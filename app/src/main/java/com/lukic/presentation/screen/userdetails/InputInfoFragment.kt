@@ -31,9 +31,11 @@ class InputInfoFragment : Fragment() {
             AppTheme {
                 InputInfoScreen(
                     content = content,
-                    onGenderClick = { gender ->
-                        viewModel.publishTextAnswer(content.stepNumber, gender)
-                    },
+                    onGenderClick = { gender -> viewModel.publishTextAnswer(content.step, gender) },
+                    onYesClick = { answer -> viewModel.publishNumberAnswer(content.step, answer) },
+                    onNoClick = { answer -> viewModel.publishNumberAnswer(content.step, answer) },
+                    onAgeSelected = { age -> viewModel.publishNumberAnswer(content.step, age) },
+                    onArrowBack = { viewModel.navigateBack(content.step) },
                     modifier = Modifier
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background)

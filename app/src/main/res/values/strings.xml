@@ -5,6 +5,10 @@
     <string name="input_info_title">Please answer the questions</string>
     <string name="input_gender_male">Male Gender</string>
     <string name="input_gender_female">Female Gender</string>
+    <string name="yes">Yes</string>
+    <string name="continue_button">Continue</string>
+    <string name="no">No</string>
+    <string name="arrow_back_content_description">Navigate back</string>
     <string-array name="intro_fun_facts">
         <item>Lung cancer strikes both men and women and people of all ages. Lung cancer affects both men and women with the average age being 70 years. Younger adults can still develop the disease with approximately 7% of lung cancer cases occurring in people under the age of 55.</item>
         <item>Drinking water containing arsenic INCREASES the risk of lung chance</item>
@@ -13,23 +17,21 @@
         <item>More lives are lost to lung cancer than to colorectal and pancreatic cancers combined</item>
     </string-array>
     <string-array name="input_details_questions">
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
-        <item>Please select your gender</item>
+        <item>Please select your gender?</item>
+        <item>How old are you?</item>
+        <item>Do you smoke tobacco?</item>
+        <item>Do you have yellow fingers?</item>
+        <item>Do you suffer from anxiety?</item>
+        <item>Do you have peer pressure?</item>
+        <item>Do you suffer from any chronic disease?</item>
+        <item>Do you suffer from fatigue?</item>
+        <item>Do you have any allergies?</item>
+        <item>Do you suffer from wheezing?</item>
+        <item>Do you consume alcohol?</item>
+        <item>Do you suffer from coughing?</item>
+        <item>Do you feel shortness of breath?</item>
+        <item>Do you have swallowing difficulty?</item>
+        <item>Do you feel chest pain?</item>
+        <item>Do you have lung cancer?</item>
     </string-array>
 </resources>
