@@ -10,8 +10,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import com.lukic.lungcancerapp.R
 import com.lukic.lungcancerapp.databinding.FragmentInputInfoBinding
 import com.lukic.presentation.ui.compose.theme.AppTheme
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InputInfoFragment : Fragment() {
@@ -42,7 +48,22 @@ class InputInfoFragment : Fragment() {
                 )
             }
         }
+
+        navigateToResults()
+
         return binding.root
+    }
+
+    private fun navigateToResults() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                launch {
+                    viewModel.navigateToResults.collect {
+                        findNavController().navigate(R.id.action_userDetailsStepGenderFragment_to_resultsFragment)
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

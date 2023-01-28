@@ -15,8 +15,7 @@ enum class UserInputSteps {
     COUGHING,
     SHORTNESS_OF_BREATH,
     SWALLOWING_DIFFICULTY,
-    CHEST_PAIN,
-    LUNG_CANCER;
+    CHEST_PAIN;
 
     companion object {
         fun fromInt(value: Int) = values().first { it.ordinal == value }

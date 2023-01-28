@@ -16,8 +16,7 @@ class UserInputRequestBuilder private constructor(
     val coughing: Int?,
     val shortnessOfBreath: Int?,
     val swallowingDifficulty: Int?,
-    val chestPain: Int?,
-    val lungCancer: String?
+    val chestPain: Int?
 ) {
 
     @Suppress("TooManyFunctions")
@@ -36,8 +35,7 @@ class UserInputRequestBuilder private constructor(
         var coughing: Int? = null,
         var shortnessOfBreath: Int? = null,
         var swallowingDifficulty: Int? = null,
-        var chestPain: Int? = null,
-        var lungCancer: String? = null
+        var chestPain: Int? = null
     ) {
         private fun gender(value: String) = apply { this.gender = value }
         private fun age(value: Int) = apply { this.age = value }
@@ -54,7 +52,6 @@ class UserInputRequestBuilder private constructor(
         private fun shortnessOfBreath(value: Int) = apply { this.shortnessOfBreath = value }
         private fun swallowingDifficulty(value: Int) = apply { this.swallowingDifficulty = value }
         private fun chestPain(value: Int) = apply { this.chestPain = value }
-        private fun lungCancer(value: Int) = apply { this.lungCancer = if (value == 1) "YES" else "NO" }
         fun build() = UserInputRequestBuilder(
             gender,
             age,
@@ -70,8 +67,7 @@ class UserInputRequestBuilder private constructor(
             coughing,
             shortnessOfBreath,
             swallowingDifficulty,
-            chestPain,
-            lungCancer
+            chestPain
         )
 
         @Suppress("ComplexMethod", "MagicNumber")
@@ -92,7 +88,6 @@ class UserInputRequestBuilder private constructor(
                 13 -> shortnessOfBreath(numberValue)
                 14 -> swallowingDifficulty(numberValue)
                 15 -> chestPain(numberValue)
-                16 -> lungCancer(numberValue)
             }
         }
     }
