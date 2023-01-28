@@ -2,7 +2,7 @@ package com.lukic.data.userdetails.repository
 
 import com.lukic.data.userdetails.model.Gender
 import com.lukic.data.userdetails.model.UserInputRequestBuilder
-import com.lukic.domain.model.toUserInputModel
+import com.lukic.data.userdetails.model.toUserInputModel
 import com.lukic.domain.repository.UserRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow

@@ -9,7 +9,7 @@ interface UserRepository {
 
     suspend fun publishStepUserInputModels(step: Int)
 
-    suspend fun publishUserStepInfo(step: Int, textAnswer: String = "", numberAnswer: Int = 0)
+    suspend fun publishUserStepInfo(step: Int, textAnswer: String, numberAnswer: Int)
 
     suspend fun sendUserInfo()
 }

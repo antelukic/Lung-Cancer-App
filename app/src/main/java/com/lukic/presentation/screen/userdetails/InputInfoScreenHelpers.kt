@@ -80,25 +80,19 @@ fun QuestionContent(
             modifier = modifier
         )
         UserInputSteps.SHORTNESS_OF_BREATH -> YesNoQuestions(
-            composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.coughing)).value,
+            composition = null,
             onYesClick = onYesClick,
             onNoClick = onNoClick,
             modifier = modifier
         )
         UserInputSteps.SWALLOWING_DIFFICULTY -> YesNoQuestions(
-            composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.coughing)).value,
+            composition = null,
             onYesClick = onYesClick,
             onNoClick = onNoClick,
             modifier = modifier
         )
         UserInputSteps.CHEST_PAIN -> YesNoQuestions(
-            composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.coughing)).value,
-            onYesClick = onYesClick,
-            onNoClick = onNoClick,
-            modifier = modifier
-        )
-        UserInputSteps.LUNG_CANCER -> YesNoQuestions(
-            composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.lung_cancer)).value,
+            composition = null,
             onYesClick = onYesClick,
             onNoClick = onNoClick,
             modifier = modifier

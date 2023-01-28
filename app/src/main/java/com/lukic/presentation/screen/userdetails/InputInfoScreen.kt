@@ -62,7 +62,7 @@ import com.lukic.data.userdetails.model.NO_ANSWER_VALUE
 import com.lukic.data.userdetails.model.YES_ANSWER_VALUE
 import com.lukic.lungcancerapp.R
 
-private const val PAGE_COUNT = 16
+private const val PAGE_COUNT = 15
 private const val INITIAL_PAGE = 0
 private const val CHILD_LOW_VALUE = 0
 private const val CHILD_TOP_VALUE = 15

@@ -1,5 +1,7 @@
 package com.lukic.data.userdetails.model
 
+import com.lukic.domain.model.UserInputModel
+
 const val YES_ANSWER_VALUE = 2
 const val NO_ANSWER_VALUE = 1
 const val MALE_ANSWER_VALUE = "M"
@@ -30,7 +32,7 @@ fun userInputModels() = listOf(
     ShortnessOfBreath(),
     SwallowingDifficulty(),
     ChestPain(),
-    LungCancer()
+    Results()
 )
 
 data class Gender(
@@ -193,17 +195,20 @@ data class ChestPain(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 14
+        const val STEP_NUMBER = 14
     }
 }
 
-data class LungCancer(
-    override val stepNumber: Int = STEP_NUMBER,
-    override val yes: Int = YES_ANSWER_VALUE,
-    override val no: Int = NO_ANSWER_VALUE
-) : UserInputModels, YesNoInput {
+data class Results(
+    override val stepNumber: Int = STEP_NUMBER
+) : UserInputModels {
 
     companion object {
-        private const val STEP_NUMBER = 15
+        const val STEP_NUMBER = 15
     }
 }
+
+fun UserInputModels.toUserInputModel() = UserInputModel(
+    step = stepNumber,
+    isLastInput = stepNumber == Results.STEP_NUMBER
+)

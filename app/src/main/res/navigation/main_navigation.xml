@@ -17,5 +17,14 @@
     <fragment
         android:id="@+id/userDetailsStepGenderFragment"
         android:name="com.lukic.presentation.screen.userdetails.InputInfoFragment"
-        android:label="UserDetailsStepGenderFragment" />
+        android:label="UserDetailsStepGenderFragment">
+        <action
+            android:id="@+id/action_userDetailsStepGenderFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.lukic.presentation.screen.results.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" />
 </navigation>

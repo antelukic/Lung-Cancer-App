@@ -10,6 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
@@ -34,13 +35,20 @@ class InputInfoViewModel(
 ) : ViewModel() {
 
     val contentUiState = MutableStateFlow(Content.Default)
+    val navigateToResults = MutableSharedFlow<Unit>()
     private val bgScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
     init {
         bgScope.launch {
             publishUserInputStep.invoke(INITIAL_STEP)
 
-            userInputStep().collect { contentUiState.value = it.toContent() }
+            userInputStep().collect { userInputModel ->
+                if (userInputModel.isLastInput) {
+                    navigateToResults.emit(Unit)
+                } else {
+                    contentUiState.value = userInputModel.toContent()
+                }
+            }
         }
     }
 
