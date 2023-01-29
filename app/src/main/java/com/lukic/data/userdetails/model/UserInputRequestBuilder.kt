@@ -70,24 +70,24 @@ class UserInputRequestBuilder private constructor(
             chestPain
         )
 
-        @Suppress("ComplexMethod", "MagicNumber")
+        @Suppress("ComplexMethod")
         fun buildByStep(step: Int, textValue: String = "", numberValue: Int = 0) {
             when (step) {
-                1 -> gender(textValue)
-                2 -> age(numberValue)
-                3 -> smoking(numberValue)
-                4 -> yellowFingers(numberValue)
-                5 -> anxiety(numberValue)
-                6 -> peerPressure(numberValue)
-                7 -> chronicDisease(numberValue)
-                8 -> fatigue(numberValue)
-                9 -> allergy(numberValue)
-                10 -> wheezing(numberValue)
-                11 -> alcohol(numberValue)
-                12 -> coughing(numberValue)
-                13 -> shortnessOfBreath(numberValue)
-                14 -> swallowingDifficulty(numberValue)
-                15 -> chestPain(numberValue)
+                Gender.STEP_NUMBER -> gender(textValue)
+                Age.STEP_NUMBER -> age(numberValue)
+                Smoking.STEP_NUMBER -> smoking(numberValue)
+                YellowFingers.STEP_NUMBER -> yellowFingers(numberValue)
+                Anxiety.STEP_NUMBER -> anxiety(numberValue)
+                PeerPressure.STEP_NUMBER -> peerPressure(numberValue)
+                ChronicDisease.STEP_NUMBER -> chronicDisease(numberValue)
+                Fatigue.STEP_NUMBER -> fatigue(numberValue)
+                Allergy.STEP_NUMBER -> allergy(numberValue)
+                Wheezing.STEP_NUMBER -> wheezing(numberValue)
+                Alcohol.STEP_NUMBER -> alcohol(numberValue)
+                Coughing.STEP_NUMBER -> coughing(numberValue)
+                ShortnessOfBreath.STEP_NUMBER -> shortnessOfBreath(numberValue)
+                SwallowingDifficulty.STEP_NUMBER -> swallowingDifficulty(numberValue)
+                ChestPain.STEP_NUMBER -> chestPain(numberValue)
             }
         }
     }

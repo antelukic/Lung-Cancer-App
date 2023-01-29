@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 class QueryUserInputStepUseCase(private val userRepository: UserRepository) : QueryUseCase<UserInputModel> {
 
-    override suspend fun invoke(): Flow<UserInputModel> = userRepository.userInputModels()
+    override operator fun invoke(): Flow<UserInputModel> = userRepository.userInputModels()
 }
