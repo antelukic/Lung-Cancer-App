@@ -1,6 +1,6 @@
 package com.lukic.domain.usecase
 
-interface CommandUseCase<T> {
+interface CommandUseCaseWithParam<T> {
 
     suspend operator fun invoke(param: T)
 }

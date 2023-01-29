@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.lukic.lungcancerapp.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ResultsFragment : Fragment() {
+
+    private val viewModel by viewModel<ResultsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

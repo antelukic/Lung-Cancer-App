@@ -9,6 +9,7 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.accept
+import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
@@ -35,6 +36,7 @@ class KtorClient(
                 Json {
                     prettyPrint = true
                     ignoreUnknownKeys = true
+                    isLenient = true
                 }
             )
             register(ContentType.Application.Json, converter)
@@ -42,7 +44,7 @@ class KtorClient(
 
         defaultRequest {
             url(domainBase)
-            url.parameters.append("api_key", apiKey)
+            header("Authorization", " Bearer $apiKey")
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
         }

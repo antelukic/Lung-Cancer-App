@@ -1,5 +1,6 @@
 package com.lukic.domain.repository
 
+import com.lukic.domain.model.ResultModel
 import com.lukic.domain.model.UserInputModel
 import kotlinx.coroutines.flow.Flow
 
@@ -11,5 +12,5 @@ interface UserRepository {
 
     suspend fun publishUserStepInfo(step: Int, textAnswer: String, numberAnswer: Int)
 
-    suspend fun sendUserInfo()
+    suspend fun result(): Flow<ResultModel>
 }

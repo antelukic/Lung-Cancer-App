@@ -27,5 +27,5 @@ val userInputModule = module {
     single { PublishUserInputStepUseCase(get()) }
     single { QueryUserInputStepUseCase(get()) }
 
-    single<UserRepository> { UserRepositoryImpl() }
+    single<UserRepository> { UserRepositoryImpl(get(), get()) }
 }

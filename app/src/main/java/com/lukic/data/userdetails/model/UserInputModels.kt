@@ -42,7 +42,7 @@ data class Gender(
 ) : UserInputModels {
 
     companion object {
-        private const val STEP_NUMBER = 0
+        const val STEP_NUMBER = 0
     }
 }
 
@@ -52,7 +52,7 @@ data class Age(
 ) : UserInputModels {
 
     companion object {
-        private const val STEP_NUMBER = 1
+        const val STEP_NUMBER = 1
     }
 }
 
@@ -63,7 +63,7 @@ data class Smoking(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 2
+        const val STEP_NUMBER = 2
     }
 }
 
@@ -74,7 +74,7 @@ data class YellowFingers(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 3
+        const val STEP_NUMBER = 3
     }
 }
 
@@ -85,7 +85,7 @@ data class Anxiety(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 4
+        const val STEP_NUMBER = 4
     }
 }
 
@@ -96,7 +96,7 @@ data class PeerPressure(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 5
+        const val STEP_NUMBER = 5
     }
 }
 
@@ -107,7 +107,7 @@ data class ChronicDisease(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 6
+        const val STEP_NUMBER = 6
     }
 }
 
@@ -118,7 +118,7 @@ data class Fatigue(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 7
+        const val STEP_NUMBER = 7
     }
 }
 
@@ -129,7 +129,7 @@ data class Allergy(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 8
+        const val STEP_NUMBER = 8
     }
 }
 
@@ -140,7 +140,7 @@ data class Wheezing(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 9
+        const val STEP_NUMBER = 9
     }
 }
 
@@ -151,7 +151,7 @@ data class Alcohol(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 10
+        const val STEP_NUMBER = 10
     }
 }
 
@@ -162,7 +162,7 @@ data class Coughing(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 11
+        const val STEP_NUMBER = 11
     }
 }
 
@@ -173,7 +173,7 @@ data class ShortnessOfBreath(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 12
+        const val STEP_NUMBER = 12
     }
 }
 
@@ -184,7 +184,7 @@ data class SwallowingDifficulty(
 ) : UserInputModels, YesNoInput {
 
     companion object {
-        private const val STEP_NUMBER = 13
+        const val STEP_NUMBER = 13
     }
 }
 
