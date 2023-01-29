@@ -19,6 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Touch local properties
+        run: touch local.properties
+      - name: Add Api Key
+        run: echo "API_KEY=\"\" " >> local.properties
+      - name: Add Api Key
+        run: echo "BASE_URL=\"\" " >> local.properties
       - name: run Lint
         run: ./gradlew lintDebug
   detekt:
