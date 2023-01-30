@@ -1,12 +1,14 @@
+@file:Suppress("TooManyFunctions")
+
 package com.lukic.presentation.screen.userdetails
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -78,6 +80,8 @@ private const val ADULT_VALUE = 2
 private const val OLD_VALUE = 3
 private const val SLIDER_LOW_VALUE = 0f
 private const val SLIDER_TOP_VALUE = 100f
+private const val STEP_GENDER = 0
+private const val STEP_AGE = 1
 
 @Suppress("LongParameterList")
 @OptIn(ExperimentalPagerApi::class)
@@ -197,30 +201,88 @@ private fun PagerInputContent(
     questionText: String,
     modifier: Modifier
 ) {
-    AnimatedContent(
-        targetState = currentPage,
+    Box(modifier = modifier) {
+        var sliderPosition by remember { mutableStateOf(0f) }
+
+        AnimatedContent(targetState = currentPage) {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                Text(
+                    text = questionText,
+                    style = MaterialTheme.typography.headlineMedium.copy(textAlign = TextAlign.Center),
+                    modifier = Modifier.padding(dimensionResource(id = R.dimen.question_padding))
+                )
+
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.intro_pager_input_spacer_height)))
+
+                QuestionContent(
+                    content = content,
+                    sliderPosition = sliderPosition,
+                    onGenderClick = onGenderClick,
+                    onSliderValueChange = { sliderPosition = it }
+                )
+            }
+        }
+
+        Buttons(
+            step = content.step.ordinal,
+            sliderPosition = sliderPosition.toInt(),
+            onYesClick = onYesClick,
+            onNoClick = onNoClick,
+            onAgeSelected = onAgeSelected,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+}
+
+@Suppress("LongParameterList")
+@Composable
+private fun Buttons(
+    step: Int,
+    sliderPosition: Int,
+    onYesClick: (Int) -> Unit,
+    onNoClick: (Int) -> Unit,
+    onAgeSelected: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Crossfade(
+        targetState = step,
         modifier = modifier
-    ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Text(
-                text = questionText,
-                style = MaterialTheme.typography.headlineMedium.copy(textAlign = TextAlign.Center),
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.question_padding))
-            )
+    ) { inputStep ->
+        if (inputStep == STEP_AGE) {
+            Button(
+                onClick = { onAgeSelected(sliderPosition) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(dimensionResource(id = R.dimen.continue_button_padding))
+            ) {
+                Text(
+                    text = stringResource(id = R.string.continue_button),
+                    style = MaterialTheme.typography.bodyLarge.copy(textAlign = TextAlign.Center)
+                )
+            }
+        }
+        if (inputStep != STEP_AGE && inputStep != STEP_GENDER) {
+            Column {
+                YesNoButton(
+                    text = stringResource(id = R.string.yes),
+                    onClick = { onYesClick(YES_ANSWER_VALUE) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(id = R.dimen.yes_no_button_padding))
+                )
 
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.intro_pager_input_spacer_height)))
-
-            QuestionContent(
-                content = content,
-                onYesClick = onYesClick,
-                onNoClick = onNoClick,
-                onGenderClick = onGenderClick,
-                onAgeSelected = onAgeSelected
-            )
+                YesNoButton(
+                    text = stringResource(id = R.string.no),
+                    onClick = { onNoClick(NO_ANSWER_VALUE) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(id = R.dimen.yes_no_button_padding))
+                )
+            }
         }
     }
 }
@@ -281,20 +343,17 @@ private fun GenderInputCard(
 @Suppress("LongParameterList")
 @Composable
 fun InputAge(
-    onAgeSelected: (Int) -> Unit,
+    sliderPosition: Float,
+    onSliderValueChange: (Float) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var sliderPosition by remember { mutableStateOf(0f) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
         InputAgeAnimation(sliderPosition = sliderPosition.toInt())
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.background(MaterialTheme.colorScheme.secondary)
-        ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = sliderPosition.toInt().toString(),
                 style = MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.Start),
@@ -307,30 +366,18 @@ fun InputAge(
 
             Slider(
                 value = sliderPosition,
-                onValueChange = { sliderPosition = it },
+                onValueChange = onSliderValueChange,
                 valueRange = SLIDER_LOW_VALUE..SLIDER_TOP_VALUE,
                 colors = SliderDefaults.colors(
                     thumbColor = MaterialTheme.colorScheme.primary,
-                    activeTrackColor = MaterialTheme.colorScheme.background,
-                    inactiveTrackColor = MaterialTheme.colorScheme.secondary
+                    activeTrackColor = MaterialTheme.colorScheme.primary,
+                    inactiveTrackColor = MaterialTheme.colorScheme.primaryContainer
                 ),
                 modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.slider_horizontal_padding))
             )
         }
 
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.select_age_spacer_height)))
-
-        Button(
-            onClick = { onAgeSelected(sliderPosition.toInt()) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(id = R.dimen.continue_button_padding))
-        ) {
-            Text(
-                text = stringResource(id = R.string.continue_button),
-                style = MaterialTheme.typography.bodyLarge.copy(textAlign = TextAlign.Center)
-            )
-        }
     }
 }
 
@@ -383,8 +430,6 @@ private fun InputAgeAnimation(
 @Composable
 fun YesNoQuestions(
     composition: LottieComposition?,
-    onYesClick: (Int) -> Unit,
-    onNoClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -404,22 +449,6 @@ fun YesNoQuestions(
             )
         }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.yes_no_questions_spacer_height)))
-
-        YesNoButton(
-            text = stringResource(id = R.string.yes),
-            onClick = { onYesClick(YES_ANSWER_VALUE) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(id = R.dimen.yes_no_button_padding))
-        )
-
-        YesNoButton(
-            text = stringResource(id = R.string.no),
-            onClick = { onNoClick(NO_ANSWER_VALUE) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(id = R.dimen.yes_no_button_padding))
-        )
     }
 }
 
