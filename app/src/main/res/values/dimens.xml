@@ -22,4 +22,11 @@
     <dimen name="slider_horizontal_padding">16dp</dimen>
     <dimen name="question_padding">16dp</dimen>
     <dimen name="input_age_spacer_height">12dp</dimen>
+    <dimen name="result_title_padding">16dp</dimen>
+    <dimen name="result_title_animation_spacer">16dp</dimen>
+    <dimen name="result_body_padding">16dp</dimen>
+    <dimen name="result_animation_body_spacer">16dp</dimen>
+    <dimen name="loader_size">52dp</dimen>
+    <dimen name="learn_more_horizontal_padding">24dp</dimen>
+    <dimen name="button_required_height">48dp</dimen>
 </resources>
