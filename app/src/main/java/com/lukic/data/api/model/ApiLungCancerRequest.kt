@@ -1,4 +1,5 @@
 @file:Suppress("ConstructorParameterNaming")
+
 package com.lukic.data.api.model
 
 import com.lukic.data.userdetails.model.UserInputRequestBuilder

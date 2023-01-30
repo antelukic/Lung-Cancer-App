@@ -9,6 +9,12 @@
     <string name="continue_button">Continue</string>
     <string name="no">No</string>
     <string name="arrow_back_content_description">Navigate back</string>
+    <string name="sick_title">Bad news!</string>
+    <string name="good_results">Congrats!</string>
+    <string name="bad_result_body">It is not over yet! Press learn more button to see your next steps. Remember to never give up and we hope you get better soon!</string>
+    <string name="good_result_body">Congratulations on your results. To keep it that way press the learn more button and learn how to stay healthy!</string>
+    <string name="learn_more">Learn more</string>
+    <string name="results_browser_toast_message">There has been an issue with opening your web browser</string>
     <string-array name="intro_fun_facts">
         <item>Lung cancer strikes both men and women and people of all ages. Lung cancer affects both men and women with the average age being 70 years. Younger adults can still develop the disease with approximately 7% of lung cancer cases occurring in people under the age of 55.</item>
         <item>Drinking water containing arsenic INCREASES the risk of lung chance</item>
