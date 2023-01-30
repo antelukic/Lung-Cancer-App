@@ -60,7 +60,8 @@ class ResultsFragment : Fragment() {
             Toast.makeText(
                 requireContext(),
                 resources.getString(R.string.results_browser_toast_message),
-                Toast.LENGTH_LONG)
+                Toast.LENGTH_LONG
+            )
                 .show()
         }
     }
