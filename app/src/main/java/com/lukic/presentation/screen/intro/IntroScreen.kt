@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -25,9 +26,22 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.lukic.lungcancerapp.R
+import com.lukic.presentation.screen.intro.IntroScreenTestTags.FUN_FACT
+import com.lukic.presentation.screen.intro.IntroScreenTestTags.PAGER
+import com.lukic.presentation.screen.intro.IntroScreenTestTags.PAGER_INDICATOR
+import com.lukic.presentation.screen.intro.IntroScreenTestTags.START_BUTTON
+import com.lukic.presentation.screen.intro.IntroScreenTestTags.TITLE
 
 private const val PAGE_COUNT = 5
 private const val INITIAL_PAGE = 0
+
+object IntroScreenTestTags {
+    const val TITLE = "Title"
+    const val PAGER = "Pager"
+    const val PAGER_INDICATOR = "PagerIndicator"
+    const val START_BUTTON = "StartButton"
+    const val FUN_FACT = "FunFact"
+}
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -44,6 +58,7 @@ fun IntroScreen(
             text = stringResource(id = R.string.intro_title),
             style = MaterialTheme.typography.headlineLarge.copy(textAlign = TextAlign.Center),
             modifier = Modifier
+                .testTag(TITLE)
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.title_padding))
         )
@@ -53,20 +68,24 @@ fun IntroScreen(
             pageContent = pageContent,
             pagerState = pagerState,
             modifier = Modifier
+                .testTag(PAGER)
                 .weight(1f)
                 .padding(horizontal = dimensionResource(id = R.dimen.intro_facts_padding))
         )
 
         HorizontalPagerIndicator(
             pagerState = pagerState,
-            modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_indicator)),
             activeColor = MaterialTheme.colorScheme.primary,
-            inactiveColor = MaterialTheme.colorScheme.secondary
+            inactiveColor = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier
+                .testTag(PAGER_INDICATOR)
+                .padding(dimensionResource(id = R.dimen.padding_indicator))
         )
 
         Button(
             onClick = onStartClick,
             modifier = Modifier
+                .testTag(START_BUTTON)
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.start_now_button_padding))
         ) {
@@ -112,6 +131,7 @@ private fun Pager(
                         textAlign = TextAlign.Center
                     ),
                     modifier = Modifier
+                        .testTag(FUN_FACT)
                         .align(Alignment.Center)
                         .padding(dimensionResource(id = R.dimen.intro_text_padding))
                 )
