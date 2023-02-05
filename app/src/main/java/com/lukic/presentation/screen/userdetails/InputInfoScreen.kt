@@ -41,8 +41,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -63,6 +65,10 @@ import com.lukic.data.userdetails.model.MALE_ANSWER_VALUE
 import com.lukic.data.userdetails.model.NO_ANSWER_VALUE
 import com.lukic.data.userdetails.model.YES_ANSWER_VALUE
 import com.lukic.lungcancerapp.R
+import com.lukic.presentation.screen.userdetails.InputInfoScreenTestTags.ARROW_BACK
+import com.lukic.presentation.screen.userdetails.InputInfoScreenTestTags.FEMALE_BUTTON
+import com.lukic.presentation.screen.userdetails.InputInfoScreenTestTags.INPUT_AGE
+import com.lukic.presentation.screen.userdetails.InputInfoScreenTestTags.MALE_BUTTON
 
 private const val PAGE_COUNT = 15
 private const val INITIAL_PAGE = 0
@@ -83,6 +89,16 @@ private const val SLIDER_TOP_VALUE = 100f
 private const val STEP_GENDER = 0
 private const val STEP_AGE = 1
 
+object InputInfoScreenTestTags {
+    const val TITLE = "Title"
+    const val PAGER = "Pager"
+    const val HORIZONTAL_PAGER_INDICATOR = "HorizontalPagerIndicator"
+    const val INPUT_AGE = "InputAge"
+    const val MALE_BUTTON = "MaleButton"
+    const val FEMALE_BUTTON = "FemaleButton"
+    const val ARROW_BACK = "ArrowBack"
+}
+
 @Suppress("LongParameterList")
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -101,6 +117,7 @@ fun InputInfoScreen(
     ) {
         Title(
             modifier = Modifier
+                .testTag(InputInfoScreenTestTags.TITLE)
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.input_details_title_padding))
         )
@@ -125,14 +142,18 @@ fun InputInfoScreen(
             },
             pagerState = pagerState,
             onArrowBack = onArrowBack,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
+                .testTag(InputInfoScreenTestTags.PAGER)
         )
 
         HorizontalPagerIndicator(
             pagerState = pagerState,
-            modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_indicator)),
             activeColor = MaterialTheme.colorScheme.primary,
-            inactiveColor = MaterialTheme.colorScheme.secondary
+            inactiveColor = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier
+                .padding(dimensionResource(id = R.dimen.padding_indicator))
+                .testTag(InputInfoScreenTestTags.HORIZONTAL_PAGER_INDICATOR)
         )
     }
 }
@@ -172,14 +193,19 @@ private fun Pager(
             modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.intro_facts_padding))
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                IconButton(
-                    onClick = onArrowBack,
+                AnimatedVisibility(
+                    visible = pagerState.currentPage != 0,
                     modifier = Modifier.align(Alignment.TopStart)
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = stringResource(id = R.string.arrow_back_content_description)
-                    )
+                    IconButton(
+                        onClick = onArrowBack,
+                        modifier = Modifier.testTag(ARROW_BACK)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = stringResource(id = R.string.arrow_back_content_description)
+                        )
+                    }
                 }
 
                 pageContent()
@@ -300,8 +326,11 @@ fun InputGender(
         GenderInputCard(
             icon = painterResource(id = R.drawable.male_icon),
             contentDescription = stringResource(id = R.string.input_gender_male),
-            onGenderClick = { onGenderClick(MALE_ANSWER_VALUE) },
-            modifier = Modifier.size(dimensionResource(id = R.dimen.input_gender_card_size))
+            modifier = Modifier
+                .testTag(FEMALE_BUTTON)
+                .size(dimensionResource(id = R.dimen.input_gender_card_size))
+                .clip(CircleShape)
+                .clickable { onGenderClick(MALE_ANSWER_VALUE) }
         )
 
         Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.input_gender_spacer_width)))
@@ -309,8 +338,11 @@ fun InputGender(
         GenderInputCard(
             icon = painterResource(id = R.drawable.female_icon),
             contentDescription = stringResource(id = R.string.input_gender_female),
-            onGenderClick = { onGenderClick(FEMALE_ANSWER_VALUE) },
-            modifier = Modifier.size(dimensionResource(id = R.dimen.input_gender_card_size))
+            modifier = Modifier
+                .testTag(MALE_BUTTON)
+                .size(dimensionResource(id = R.dimen.input_gender_card_size))
+                .clip(CircleShape)
+                .clickable { onGenderClick(FEMALE_ANSWER_VALUE) }
         )
     }
 }
@@ -319,7 +351,6 @@ fun InputGender(
 private fun GenderInputCard(
     icon: Painter,
     contentDescription: String,
-    onGenderClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -331,7 +362,7 @@ private fun GenderInputCard(
         shape = CircleShape,
         color = MaterialTheme.colorScheme.background,
         contentColor = Color.Black,
-        modifier = modifier.clickable(onClick = onGenderClick)
+        modifier = modifier
     ) {
         Icon(
             painter = icon,
@@ -349,7 +380,7 @@ fun InputAge(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
+        modifier = modifier.testTag(INPUT_AGE)
     ) {
         InputAgeAnimation(sliderPosition = sliderPosition.toInt())
 

@@ -23,7 +23,7 @@ class UserRepositoryImpl(
     private val resultParser: ResultParser
 ) : UserRepository {
 
-    private val userInputModelsStepPublisher = MutableSharedFlow<Int>()
+    private val userInputModelsStepPublisher = MutableSharedFlow<Int>(replay = 1)
     private var userInput = UserInputRequestBuilder.Builder()
 
     override suspend fun publishStepUserInputModels(step: Int) =

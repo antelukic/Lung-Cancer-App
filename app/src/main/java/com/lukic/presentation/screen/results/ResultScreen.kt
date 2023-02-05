@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.airbnb.lottie.LottieComposition
@@ -25,10 +26,23 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.lukic.lungcancerapp.R
+import com.lukic.presentation.screen.results.ResultScreenTestTags.ANIMATION
+import com.lukic.presentation.screen.results.ResultScreenTestTags.BODY
+import com.lukic.presentation.screen.results.ResultScreenTestTags.LEARN_MORE_BUTTON
+import com.lukic.presentation.screen.results.ResultScreenTestTags.LOADER
+import com.lukic.presentation.screen.results.ResultScreenTestTags.TITLE
 import com.lukic.presentation.ui.compose.components.Loader
 
 private const val LOADING_ALPHA = 0.5f
 private const val NOT_LOADING_ALPHA = 1f
+
+object ResultScreenTestTags {
+    const val TITLE = "Title"
+    const val ANIMATION = "Animation"
+    const val BODY = "Body"
+    const val LEARN_MORE_BUTTON = "LearnMoreButton"
+    const val LOADER = "Loader"
+}
 
 @Composable
 fun ResultScreen(
@@ -46,7 +60,9 @@ fun ResultScreen(
             Text(
                 text = contentState.title,
                 style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.result_title_padding))
+                modifier = Modifier
+                    .testTag(TITLE)
+                    .padding(dimensionResource(id = R.dimen.result_title_padding))
             )
 
             Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.result_title_animation_spacer)))
@@ -57,7 +73,9 @@ fun ResultScreen(
             Animation(
                 composition = composition,
                 progress = progress,
-                modifier = Modifier.size(dimensionResource(id = R.dimen.lottie_animation_size))
+                modifier = Modifier
+                    .testTag(ANIMATION)
+                    .size(dimensionResource(id = R.dimen.lottie_animation_size))
             )
 
             Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.result_animation_body_spacer)))
@@ -65,7 +83,9 @@ fun ResultScreen(
             Text(
                 text = contentState.body,
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.result_body_padding))
+                modifier = Modifier
+                    .testTag(BODY)
+                    .padding(dimensionResource(id = R.dimen.result_body_padding))
             )
         }
 
@@ -75,6 +95,7 @@ fun ResultScreen(
         ) {
             Loader(
                 modifier = Modifier
+                    .testTag(LOADER)
                     .progressSemantics()
                     .size(dimensionResource(id = R.dimen.loader_size))
             )
@@ -83,6 +104,7 @@ fun ResultScreen(
         Button(
             onClick = { onLearnMoreClick(contentState.link) },
             modifier = Modifier
+                .testTag(LEARN_MORE_BUTTON)
                 .requiredHeightIn(dimensionResource(id = R.dimen.button_required_height))
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.learn_more_horizontal_padding))
