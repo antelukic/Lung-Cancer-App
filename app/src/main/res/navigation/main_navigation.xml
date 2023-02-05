@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/introFragment">
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.lukic.presentation.screen.intro.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro">
+        <action
+            android:id="@+id/action_introFragment_to_userDetailsStepGenderFragment"
+            app:destination="@id/userDetailsStepGenderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetailsStepGenderFragment"
+        android:name="com.lukic.presentation.screen.userdetails.InputInfoFragment"
+        android:label="UserDetailsStepGenderFragment">
+        <action
+            android:id="@+id/action_userDetailsStepGenderFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.lukic.presentation.screen.results.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" />
+</navigation>
