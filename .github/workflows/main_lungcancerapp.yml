@@ -59,4 +59,4 @@ jobs:
           app-name: 'LungCancerApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_42C1B46144E144A59ACEBF9BAA947A7E }}
-          package: '*.jar'
+          package: '*.apk'
