@@ -28,14 +28,16 @@ jobs:
         run: echo "API_KEY=\"\" " >> local.properties
       - name: Add Api Key
         run: echo "BASE_URL=\"\" " >> local.properties
+        
       - name: Build Project
-        run: ./gradlew assemble
-
+        run: ./gradlew assembleDebug
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
 
   deploy:
     runs-on: ubuntu-latest
